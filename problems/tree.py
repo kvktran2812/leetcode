@@ -19,8 +19,27 @@ def min_abs_diff(root: List[int]) -> int:
     :return: An interger indicates the absolute minimum value
     :rtype: int
     """
-    abs_min = 0
+    abs_min = 999999
+    size = len(root)
+    next_node = [0]
 
-    
+    while next_node != []:
+        node = next_node[0]
+        left = node * 2 + 1
+        right = node * 2 + 2
 
-    return -1
+        if left < size:
+            if root[left] != None:
+                diff = abs(root[left] - root[node])
+                if diff < abs_min:
+                    abs_min = diff
+                next_node.append(left)
+        if right < size:
+            if root[right] != None:
+                diff = abs(root[right] - root[node])
+                if diff < abs_min:
+                    abs_min = diff
+                next_node.append(right)
+        next_node.pop(0)
+
+    return abs_min
