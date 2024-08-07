@@ -14,5 +14,5 @@ from problems import dp
         ]
 )
 def test_climbing(steps, expected):
-    outputs = dp.limbing(steps)
+    outputs = dp.climbing(steps)
     assert outputs == expected
