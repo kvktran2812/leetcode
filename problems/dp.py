@@ -1,4 +1,5 @@
 from typing import List, Dict, Set
+from structures.tree import TreeNode
 
 def climbing(steps: int) -> int:
     if steps == 0:
@@ -63,3 +64,30 @@ def count_bits(n: int) -> List[int]:
         if i % 2 == 1:
             ans[i] = ans[i // 2] + 1
     return ans
+
+def possible_full_binary_trees(n : int) -> int:
+    if n % 2 == 0:
+        return []
+    dp = {
+        1: [TreeNode(0)]
+    }
+
+    def generate_tree(nodes: int):
+        if nodes in dp:
+            return dp[nodes]
+
+        trees = []
+        for i in range(1, nodes, 2):
+            j = nodes - i - 1
+            l_trees = generate_tree(i)
+            r_trees = generate_tree(j)
+            
+            for left in l_trees:
+                for right in r_trees:
+                    root = TreeNode(0)
+                    root.left = left
+                    root.right = right
+                    trees.append(root)
+        dp[nodes] = trees
+        return trees
+    return generate_tree(n)
