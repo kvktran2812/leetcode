@@ -91,3 +91,22 @@ def possible_full_binary_trees(n : int) -> int:
         dp[nodes] = trees
         return trees
     return generate_tree(n)
+
+def countVowelStrings(n: int) -> int:
+    return (n + 4) * (n + 3) * (n + 2) * (n + 1) // 24
+
+
+def count_vowels_strings_dp(n: int) -> int:
+    if n == 1:
+        return 5
+
+    dp = [[] for _ in range(n)]
+    dp[0] = ['a', 'e', 'i', 'o', 'u']
+
+    for i in range(1, n):
+        for j in range(len(dp[i-1])):
+            for k in range(5):
+                if dp[0][k] < dp[i-1][j][-1]:
+                    dp[i].append(dp[i-1][j] + dp[0][k])
+
+    return dp, len(dp[-1])

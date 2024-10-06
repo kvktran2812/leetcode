@@ -16,3 +16,5 @@ from problems import dp
 def test_climbing(steps, expected):
     outputs = dp.climbing(steps)
     assert outputs == expected
+
+
