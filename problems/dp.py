@@ -1,6 +1,7 @@
 from typing import List, Dict, Set
 from structures.tree import TreeNode
 
+
 def climbing(steps: int) -> int:
     if steps == 0:
         return 0
@@ -18,6 +19,7 @@ def climbing(steps: int) -> int:
         L[i] = L[i-1] + L[i-2]
     return L[-1]
 
+
 def fibonacci(n: int) -> int:
     if n == 0:
             return 0
@@ -33,6 +35,7 @@ def fibonacci(n: int) -> int:
         i += 1
 
     return fib[n]
+
 
 def longest_common_subsequence(X: str, Y: str) -> int:
     m = len(X)
@@ -65,6 +68,7 @@ def count_bits(n: int) -> List[int]:
             ans[i] = ans[i // 2] + 1
     return ans
 
+
 def possible_full_binary_trees(n : int) -> int:
     if n % 2 == 0:
         return []
@@ -91,6 +95,7 @@ def possible_full_binary_trees(n : int) -> int:
         dp[nodes] = trees
         return trees
     return generate_tree(n)
+
 
 def countVowelStrings(n: int) -> int:
     return (n + 4) * (n + 3) * (n + 2) * (n + 1) // 24
