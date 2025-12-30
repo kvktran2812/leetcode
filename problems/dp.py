@@ -115,3 +115,23 @@ def count_vowels_strings_dp(n: int) -> int:
                     dp[i].append(dp[i-1][j] + dp[0][k])
 
     return dp, len(dp[-1])
+
+
+def pascal_triangle(rowIndex) -> List[int]:
+    if rowIndex == 0:
+        return [1]
+    
+    dp = [[1]* (rowIndex + 1) for _ in range(rowIndex + 1)]
+
+    for i in range(1, rowIndex+1):
+        if i == rowIndex:
+            continue
+            
+        for j in range(1, rowIndex+1):
+            if j == rowIndex:
+                continue
+            dp[i][j] = dp[i-1][j] + dp[i][j-1]
+
+    ret_arr = [dp[i][len(dp)-1-i] for i in range(len(dp))]
+
+    return ret_arr
